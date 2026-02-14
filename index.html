@@ -1,116 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Portal</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Account</title>
+<link rel="stylesheet" href="auth.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">🎮 Game Portal</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#games">Games</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Welcome to Game Portal</h1>
-        <p>Explore the best online games!</p>
-        <button onclick="scrollToSection('games')">Discover Games</button>
-    </section>
+<div class="auth-wrap">
+  <div class="auth-card">
 
-    <!-- Game Sorting and Cards -->
-    <section id="games" class="games-section">
-        <h2>Games</h2>
-        <div class="filter">
-            <button onclick="filterGames('all')">All</button>
-            <button onclick="filterGames('action')">Action</button>
-            <button onclick="filterGames('puzzle')">Puzzle</button>
-            <button onclick="filterGames('adventure')">Adventure</button>
-        </div>
-        <div class="game-list">
-            <!-- Old Game Cards -->
-            <div class="game-card" data-genre="puzzle" onclick="openGame('block-blast')">
-                <img src="https://www.onlinegames.io/media/posts/876/responsive/block-blast-lg.jpg" alt="Block Blast">
-                <h3>Block Blast</h3>
-                <p>A fun and challenging puzzle game!</p>
-            </div>
+   <div class="pfp-wrap" id="pfpSection">
+  <img id="pfpPreview" src="https://i.imgur.com/6VBx3io.png">
+  <input type="file" id="pfpInput" accept="image/*">
+</div>
 
-            <div class="game-card" data-genre="action" onclick="openGame('snake-football')">
-                <img src="https://www.onlinegames.io/media/posts/706/responsive/Snake-Football-lg.jpg" alt="Snake Football">
-                <h3>Snake Football</h3>
-                <p>Combine snakes and football in this exciting action game!</p>
-            </div>
 
-            <div class="game-card" data-genre="action" onclick="openGame('police-chase-drifter')">
-                <img src="https://www.onlinegames.io/media/posts/155/responsive/Police-Chase-Drifter-Online-lg.jpg" alt="Police Chase Drifter">
-                <h3>Police Chase Drifter</h3>
-                <p>Escape the cops in this thrilling action-packed game!</p>
-            </div>
+    <h1 id="title">Create Account</h1>
 
-            <div class="game-card" data-genre="adventure" onclick="openGame('real-flight-simulator')">
-                <img src="https://www.onlinegames.io/media/posts/342/responsive/Real-Flight-Simulator-2-lg.jpg" alt="Real Flight Simulator">
-                <h3>Real Flight Simulator</h3>
-                <p>Take off and explore the skies in this realistic flight simulator.</p>
-            </div>
+    <input id="name" placeholder="Username">
 
-            <div class="game-card" data-genre="action" onclick="openGame('geometry-escape')">
-                <img src="https://www.onlinegames.io/media/posts/905/responsive/Geometry-Escape-lg.jpg" alt="Geometry Escape">
-                <h3>Geometry Escape</h3>
-                <p>Navigate through challenging geometric puzzles!</p>
-            </div>
-
-            <!-- New Game Cards -->
-            <div class="game-card" data-genre="puzzle" onclick="openGame('triple-cars')">
-                <img src="https://www.htmlgames.com/uploaded/game/thumb200/triplecars200.webp" alt="Triple Cars">
-                <h3>Triple Cars</h3>
-                <p>A fun and challenging puzzle game!</p>
-            </div>
-
-            <div class="game-card" data-genre="adventure" onclick="openGame('goblin-run')">
-                <img src="https://www.htmlgames.com/uploaded/game/thumb200/goblinrun200.webp" alt="Goblin Run">
-                <h3>Goblin Run</h3>
-                <p>An exciting adventure game where you escape from danger!</p>
-            </div>
-
-            <div class="game-card" data-genre="puzzle" onclick="openGame('merge-cards')">
-                <img src="https://www.htmlgames.com/uploaded/game/thumb200/mergecards200.webp" alt="Merge Cards">
-                <h3>Merge Cards</h3>
-                <p>Merge cards to solve tricky puzzles!</p>
-            </div>
-
-            <div class="game-card" data-genre="puzzle" onclick="openGame('tetrix')">
-                <img src="https://www.htmlgames.com/uploaded/game/thumb200/tetrix200.webp" alt="Tetrix">
-                <h3>Tetrix</h3>
-                <p>Test your puzzle skills with this classic game!</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Game Modal -->
-    <div id="gameModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <iframe id="gameIframe" src="" width="800" height="600" frameborder="0"></iframe>
-        </div>
+    <div class="pass-box">
+      <input id="pass" type="password" placeholder="Password">
+      <span id="togglePass">👁</span>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>© 2024 Game Portal. All rights reserved.</p>
-        <p>Follow us on:
-            <a href="#">Twitter</a> | 
-            <a href="#">Facebook</a> | 
-            <a href="#">Instagram</a>
-        </p>
-    </footer>
+    <button id="submit">Sign Up</button>
 
-    <script src="script.js"></script>
+    <p id="toggleText">Already have an account? <span id="toggle">Log In</span></p>
+
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="app.js"></script>
 </body>
 </html>
