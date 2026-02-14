@@ -1,63 +1,70 @@
-function filterGames(genre) {
-    const cards = document.querySelectorAll('.game-card');
-    cards.forEach(card => {
-        if (genre === 'all' || card.dataset.genre === genre) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-}
+window.onload = () => {
+  loader.style.display = "none";
 
-function scrollToSection(sectionId) {
-    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-}
+  // shuffle trending
+  [...trendGrid.children].sort(() => Math.random() - 0.5).forEach(e => trendGrid.appendChild(e));
 
-// Open the game modal and load the game
-function openGame(gameId) {
-    const modal = document.getElementById("gameModal");
-    const iframe = document.getElementById("gameIframe");
+  loadFavs();
+};
 
-    // New game links
-    if (gameId === 'triple-cars') {
-        iframe.src = "https://cdn.htmlgames.com/TripleCars/";
-    } else if (gameId === 'goblin-run') {
-        iframe.src = "https://cdn.htmlgames.com/GoblinRun/";
-    } else if (gameId === 'merge-cards') {
-        iframe.src = "https://cdn.htmlgames.com/MergeCards/";
-    } else if (gameId === 'tetrix') {
-        iframe.src = "https://cdn.htmlgames.com/Tetrix/";
+// POPUP
+document.addEventListener("click", e => {
+  let item = e.target.closest(".trend-item");
+
+  if (item && !e.target.classList.contains("fav-btn")) {
+    popup.style.display = "flex";
+    popupImg.src = item.dataset.img;
+    popupTitle.innerText = item.dataset.title;
+  }
+
+  if (e.target.id == "popup" || e.target.id == "closePopup") popup.style.display = "none";
+});
+
+// SEARCH
+document.querySelector(".search-box input").addEventListener("input", e => {
+  let q = e.target.value.toLowerCase();
+  document.querySelectorAll(".trend-item").forEach(i => {
+    i.style.display = i.dataset.title.toLowerCase().includes(q) ? "" : "none";
+  });
+});
+
+// TAG FILTER
+tagFilter.addEventListener("change", e => {
+  let tag = e.target.value;
+  document.querySelectorAll(".trend-item").forEach(i => {
+    i.style.display = tag == "all" || i.dataset.tags.includes(tag) ? "" : "none";
+  });
+});
+
+// FAVORITES SYSTEM (localStorage)
+let favs = JSON.parse(localStorage.getItem("favs") || "[]");
+
+document.addEventListener("click", e => {
+  if (!e.target.classList.contains("fav-btn")) return;
+  let card = e.target.closest(".trend-item");
+  let title = card.dataset.title;
+
+  if (favs.includes(title)) {
+    favs = favs.filter(f => f != title);
+    e.target.classList.remove("active");
+  } else {
+    favs.push(title);
+    e.target.classList.add("active");
+  }
+
+  localStorage.setItem("favs", JSON.stringify(favs));
+  loadFavs();
+});
+
+function loadFavs() {
+  favGrid.innerHTML = "";
+  document.querySelectorAll(".trend-item").forEach(card => {
+    let btn = card.querySelector(".fav-btn");
+    if (favs.includes(card.dataset.title)) {
+      btn.classList.add("active");
+      favGrid.appendChild(card.cloneNode(true));
+    } else {
+      btn.classList.remove("active");
     }
-
-    // Old game links
-    else if (gameId === 'block-blast') {
-        iframe.src = "https://cloud.onlinegames.io/games/2024/unity3/block-blast/index-og.html";
-    } else if (gameId === 'snake-football') {
-        iframe.src = "https://www.onlinegames.io/games/2023/construct/200/snake-football/index.html";
-    } else if (gameId === 'police-chase-drifter') {
-        iframe.src = "https://www.onlinegames.io/games/2021/3/police-chase-drifter/index.html";
-    } else if (gameId === 'real-flight-simulator') {
-        iframe.src = "https://www.onlinegames.io/games/2023/unity/real-flight-simulator/index.html";
-    } else if (gameId === 'geometry-escape') {
-        iframe.src = "https://cloud.onlinegames.io/games/2024/construct/299/geometry-escape/index-og.html";
-    }
-
-    modal.style.display = "flex"; // Show the modal
-}
-
-// Close the modal
-function closeModal() {
-    const modal = document.getElementById("gameModal");
-    const iframe = document.getElementById("gameIframe");
-
-    iframe.src = ""; // Stop the game
-    modal.style.display = "none"; // Hide the modal
-}
-
-// Close modal when clicking outside the modal content
-window.onclick = function(event) {
-    const modal = document.getElementById("gameModal");
-    if (event.target === modal) {
-        closeModal();
-    }
+  });
 }
