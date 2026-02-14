@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+<title>Toonvar</title>
+ 
+<link rel="icon" href="https://i.pinimg.com/originals/63/da/c6/63dac6b05c01aadfd2bc4d4fb078713b.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+ 
+<!-- MAIN SITE CSS -->
+<link rel="stylesheet" href="site.css">
+</head>
+ 
+<body>
+ 
+<!-- AUTH CHECK -->
+<script>
+if(!localStorage.getItem("loggedUser")){
+  location.href = "index.html"; // login page
+}
+</script>
+ 
+<!-- Loading Screen -->
+<div id="loader">
+  <img src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/3256009/loading-icon-md.png">
+</div>
+ 
+<!-- HEADER -->
+<header>
+  <div class="left">
+    <img class="logo" src="https://i.pinimg.com/originals/63/da/c6/63dac6b05c01aadfd2bc4d4fb078713b.png">
+    <span class="site-name">Toonvar</span>
+  </div>
+ 
+  <div class="search-box">
+    <img src="https://codehs.com/uploads/6c834f14cf84b5876bf68ea121a995ff">
+    <input type="text" placeholder="Search Toonvar...">
+  </div>
+ 
+  <div class="nav-buttons">
+    <button>Home</button>
+    <button>Categories</button>
+  </div>
+ 
+  <!-- USER PROFILE -->
+  <div class="user-box">
+    <img id="userPfp">
+    <span id="userName"></span>
+    <button onclick="logout()">Log Out</button>
+  </div>
+</header>
+ 
+<!-- MAIN CONTENT -->
+<main>
+ 
+<section class="trending">
+  <div class="trending-top">
+    <h2>Trending Now</h2>
+ 
+    <select id="tagFilter">
+      <option value="all">All</option>
+      <option value="funny">Funny</option>
+      <option value="action">Action</option>
+      <option value="anime">Anime</option>
+      <option value="classic">Classic</option>
+    </select>
+  </div>
+ 
+  <div id="trendGrid" class="trend-grid">
+ 
+    <div class="trend-item" data-title="Example Toon 1" data-tags="funny,classic" data-img="https://picsum.photos/600/800?1">
+      <button class="fav-btn">☆</button>
+      <img src="https://picsum.photos/300/400?1">
+      <div class="card-info">
+        <p class="title">Example Toon 1</p>
+        <span class="tags">funny • classic</span>
+      </div>
+    </div>
+ 
+    <div class="trend-item" data-title="Example Toon 2" data-tags="action,anime" data-img="https://picsum.photos/600/800?2">
+      <button class="fav-btn">☆</button>
+      <img src="https://picsum.photos/300/400?2">
+      <div class="card-info">
+        <p class="title">Example Toon 2</p>
+        <span class="tags">action • anime</span>
+      </div>
+    </div>
+ 
+    <div class="trend-item" data-title="Example Toon 3" data-tags="anime" data-img="https://picsum.photos/600/800?3">
+      <button class="fav-btn">☆</button>
+      <img src="https://picsum.photos/300/400?3">
+      <div class="card-info">
+        <p class="title">Example Toon 3</p>
+        <span class="tags">anime</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+ 
+<section class="favorites">
+  <h2>Favorites</h2>
+  <div id="favGrid" class="trend-grid"></div>
+</section>
+
+</main>
+ 
+<!-- POPUP VIEWER -->
+<div id="popup">
+  <span id="closePopup">✕</span>
+  <img id="popupImg">
+  <p id="popupTitle"></p>
+</div>
+ 
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Toonvar</p>
+  <div class="footer-links">
+    <a href="#">Terms</a>
+    <a href="#">Privacy</a>
+    <a href="#">DMCA</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+ 
+<script src="script.js"></script>
+ 
+<!-- USER LOAD SCRIPT -->
+<script>
+let user = localStorage.getItem("loggedUser");
+let users = JSON.parse(localStorage.getItem("users"));
+ 
+document.getElementById("userName").innerText = user;
+document.getElementById("userPfp").src = users[user].pfp;
+ 
+function logout(){
+  localStorage.removeItem("loggedUser");
+  location.href="index.html";
+}
+</script>
+
+</body>
+</html>
