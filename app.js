@@ -55,7 +55,7 @@ submit.onclick = () => {
 
 // Auto login
 if(localStorage.getItem("loggedUser")) {
-  location.href = "dashboard.html";
+  location.href = "toonvar.html";
 }
 
 // Toast function
