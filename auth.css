@@ -42,10 +42,14 @@ body {
 }
 
 .top-logo {
-  max-width: 100px;  /* smaller logo */
+  position: absolute;   /* fix it at top of viewport */
+  top: 20px;            /* distance from top of screen */
+  left: 50%;            /* center horizontally */
+  transform: translateX(-50%);  /* exact center */
+  max-width: 120px;     /* adjust size */
   height: auto;
+  z-index: 10;          /* ensure it’s above background */
 }
-
 
 .top-logo {
   max-width: 120px; /* adjust size */
