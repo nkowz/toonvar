@@ -7,7 +7,7 @@
 body {
   background:
     radial-gradient(circle at top, rgba(26,26,46,0.8), rgba(5,5,11,0.95)),
-    url("bg.jpg") center/cover no-repeat fixed;
+    url("Webiste background.png") center/cover no-repeat fixed;
 
   min-height: 100vh;
   display: flex;
