@@ -4,16 +4,11 @@
   box-sizing: border-box;
 }
 
-body {
-  background: radial-gradient(circle at top, #1a1a2e, #05050b);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  padding: 10px; /* small padding for mobile */
+body{
+  background:
+    radial-gradient(circle at top, rgba(26,26,46,0.85), rgba(5,5,11,0.95)),
+    url("bg.jpg") center/cover no-repeat fixed;
 }
-
 .auth-wrap {
   display: flex;
   justify-content: center;
