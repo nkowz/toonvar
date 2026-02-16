@@ -5,7 +5,7 @@
 }
 body {
   background:
-    radial-gradient(circle at top, rgba(26,26,46,0.8), rgba(5,5,11,0.95)),
+    radial-gradient(circle at top, rgba(26,26,46,0.7), rgba(5,5,11,0.9)),
     url("bg.jpg") center/cover no-repeat fixed;
 
   min-height: 100vh;
