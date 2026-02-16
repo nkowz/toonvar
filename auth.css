@@ -7,7 +7,7 @@
 body {
   background:
     radial-gradient(circle at top, rgba(26,26,46,0.8), rgba(5,5,11,0.95)),
-    url("Webiste background.png") center/cover no-repeat fixed;
+    url("https://raw.githubusercontent.com/nkowz/toonvar/0c87bf9e59dc6e73b6324083e3b35692d089c55f/Webiste%20background.png") center/cover no-repeat fixed;
 
   min-height: 100vh;
   display: flex;
