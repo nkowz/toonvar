@@ -33,6 +33,18 @@ body {
   text-align: center;
   animation: pop 0.5s ease;
 }
+.logo-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px; /* space between logo and auth card */
+}
+
+.top-logo {
+  max-width: 120px; /* adjust size */
+  height: auto;
+}
+
 
 @keyframes pop {
   from { transform: scale(0.9); opacity: 0; }
