@@ -33,12 +33,19 @@ body {
   text-align: center;
   animation: pop 0.5s ease;
 }
+/* Logo at top center */
 .logo-wrap {
   display: flex;
   justify-content: center;
-  width: 100%;
-  margin-bottom: 20px; /* space between logo and auth card */
+  margin-top: 40px; /* distance from top of screen */
+  margin-bottom: 20px; /* space before auth card */
 }
+
+.top-logo {
+  max-width: 100px;  /* smaller logo */
+  height: auto;
+}
+
 
 .top-logo {
   max-width: 120px; /* adjust size */
