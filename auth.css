@@ -244,3 +244,58 @@ button:hover {
     height: 110px;
   }
 }
+#ageGate {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+
+.age-box {
+  background: #111118;
+  padding: 30px 40px;
+  border-radius: 18px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  max-width: 360px;
+}
+
+.age-box h2 {
+  margin-bottom: 10px;
+  color: #ff4d4d;
+}
+
+.age-box p {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.age-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.age-buttons button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#ageYes {
+  background: linear-gradient(135deg, #7f5cff, #00e0ff);
+  color: white;
+}
+
+#ageNo {
+  background: #222;
+  color: white;
+}
