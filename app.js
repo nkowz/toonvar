@@ -64,3 +64,19 @@ function showToast(msg) {
   toast.classList.add("show");
   setTimeout(() => toast.classList.remove("show"), 2500);
 }
+// AGE GATE POPUP
+window.addEventListener("load", () => {
+  if (localStorage.getItem("ageVerified")) {
+    document.getElementById("ageGate").style.display = "none";
+  }
+});
+
+document.getElementById("ageYes").onclick = () => {
+  localStorage.setItem("ageVerified", "true");
+  document.getElementById("ageGate").style.display = "none";
+};
+
+document.getElementById("ageNo").onclick = () => {
+  alert("You must be 18+ to enter.");
+  window.location.href = "https://google.com"; // redirect
+};
