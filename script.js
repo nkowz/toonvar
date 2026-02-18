@@ -127,3 +127,18 @@ document.getElementById("postBtn").onclick = () => {
 
   reader.readAsDataURL(file);
 };
+function addDeleteButtons() {
+  document.querySelectorAll(".delete-btn").forEach((btn, index) => {
+    btn.onclick = () => {
+      if (!confirm("Delete this post?")) return;
+
+      let user = localStorage.getItem("loggedUser");
+      let myPosts = JSON.parse(localStorage.getItem("myPosts_" + user)) || [];
+
+      myPosts.splice(index, 1); // remove post
+      localStorage.setItem("myPosts_" + user, JSON.stringify(myPosts));
+
+      loadMyPosts(); // refresh posts
+    };
+  });
+}
