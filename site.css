@@ -455,22 +455,3 @@ footer {
 .my-posts h2 {
   margin-bottom: 15px;
 }
-.delete-btn {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: rgba(255,0,0,0.7);
-  border: none;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  cursor: pointer;
-  font-size: 14px;
-  color: white;
-  opacity: 0.8;
-}
-
-.delete-btn:hover {
-  background: red;
-  transform: scale(1.1);
-}
