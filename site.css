@@ -230,6 +230,14 @@ main {
   font-weight: 600;
 }
 
+/* My Posts Section */
+.my-posts {
+  padding: 25px;
+  background: #121218;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-radius: 18px;
+  margin: 10px 15px;
+}
 /* POPUP VIEWER */
 #popup {
   position: fixed;
@@ -438,13 +446,4 @@ footer {
 #closeUpload {
   background: #222;
   color: white;
-}
-
-/* My Posts Section */
-.my-posts {
-  padding: 25px;
-  background: #121218;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  border-radius: 18px;
-  margin: 10px 15px;
 }
