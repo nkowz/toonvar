@@ -390,3 +390,19 @@ footer {
   width: auto;         /* prevents squishing */
   object-fit: contain; /* keeps proportions */
 }
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* PUSHES LOGO TO LEFT */
+}
+
+.logo {
+  height: 90px; /* keep your big size */
+  width: auto;
+}
