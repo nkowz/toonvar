@@ -68,3 +68,61 @@ function loadFavs() {
     }
   });
 }
+// ===== UPLOAD POPUP =====
+const uploadBtn = document.getElementById("uploadBtn");
+const uploadPopup = document.getElementById("uploadPopup");
+
+uploadBtn.onclick = () => uploadPopup.style.display = "flex";
+document.getElementById("closeUpload").onclick = () => uploadPopup.style.display = "none";
+
+// ===== LOAD MY POSTS =====
+let myPosts = JSON.parse(localStorage.getItem("myPosts") || "[]");
+
+function loadMyPosts() {
+  const grid = document.getElementById("myPostGrid");
+  grid.innerHTML = "";
+
+  myPosts.forEach(post => {
+    const div = document.createElement("div");
+    div.className = "trend-item";
+    div.dataset.title = post.title;
+    div.dataset.tags = post.tags;
+    div.dataset.img = post.img;
+
+    div.innerHTML = `
+      <button class="fav-btn">☆</button>
+      <img src="${post.img}">
+      <div class="card-info">
+        <p class="title">${post.title}</p>
+        <span class="tags">${post.tags}</span>
+      </div>
+    `;
+    grid.appendChild(div);
+  });
+}
+
+loadMyPosts();
+
+// ===== POST BUTTON =====
+document.getElementById("postBtn").onclick = () => {
+  const file = document.getElementById("uploadImage").files[0];
+  const title = document.getElementById("uploadTitle").value;
+  const tags = document.getElementById("uploadTags").value;
+
+  if (!file || !title) return alert("Add image and title");
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    myPosts.push({
+      img: reader.result,
+      title,
+      tags
+    });
+
+    localStorage.setItem("myPosts", JSON.stringify(myPosts));
+    loadMyPosts();
+    uploadPopup.style.display = "none";
+  };
+
+  reader.readAsDataURL(file);
+};
