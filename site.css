@@ -447,3 +447,8 @@ footer {
   background: #222;
   color: white;
 }
+.favorites h2,
+.my-posts h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
