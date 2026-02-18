@@ -390,3 +390,61 @@ footer {
   width: auto;         /* prevents squishing */
   object-fit: contain; /* keeps proportions */
 }
+/* Upload popup */
+#uploadPopup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.upload-box {
+  background: #15151a;
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  width: 320px;
+  text-align: center;
+}
+
+.upload-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: none;
+  background: #0e0e17;
+  color: white;
+}
+
+.upload-box button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#postBtn {
+  background: #4da3ff;
+  color: white;
+}
+
+#closeUpload {
+  background: #222;
+  color: white;
+}
+
+/* My Posts Section */
+.my-posts {
+  padding: 25px;
+  background: #121218;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-radius: 18px;
+  margin: 10px 15px;
+}
