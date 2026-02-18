@@ -452,3 +452,6 @@ footer {
   font-size: 22px;
   font-weight: 600;
 }
+.my-posts h2 {
+  margin-bottom: 15px;
+}
