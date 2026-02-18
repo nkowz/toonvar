@@ -102,7 +102,31 @@ function loadMyPosts() {
   });
 }
 
-loadMyPosts();
+function loadMyPosts() {
+  let user = localStorage.getItem("loggedUser");
+  let myPosts = JSON.parse(localStorage.getItem("myPosts_" + user)) || [];
+
+  let grid = document.getElementById("myPostGrid");
+  grid.innerHTML = "";
+
+  myPosts.forEach(post => {
+    let div = document.createElement("div");
+    div.className = "trend-item";
+
+    div.innerHTML = `
+      <button class="delete-btn">🗑</button>
+      <img src="${post.img}">
+      <div class="card-info">
+        <p class="title">${post.title}</p>
+        <span class="tags">${post.tags}</span>
+      </div>
+    `;
+
+    grid.appendChild(div);
+  });
+
+  addDeleteButtons();
+}
 
 // ===== POST BUTTON =====
 document.getElementById("postBtn").onclick = () => {
