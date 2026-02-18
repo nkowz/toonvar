@@ -90,6 +90,7 @@ function loadMyPosts() {
     div.dataset.img = post.img;
 
     div.innerHTML = `
+      <button class="delete-btn">🗑</button>
       <button class="fav-btn">☆</button>
       <img src="${post.img}">
       <div class="card-info">
