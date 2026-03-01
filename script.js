@@ -90,7 +90,6 @@ function loadMyPosts() {
     div.dataset.img = post.img;
 
     div.innerHTML = `
-      <button class="delete-btn">🗑</button>
       <button class="fav-btn">☆</button>
       <img src="${post.img}">
       <div class="card-info">
@@ -102,31 +101,7 @@ function loadMyPosts() {
   });
 }
 
-function loadMyPosts() {
-  let user = localStorage.getItem("loggedUser");
-  let myPosts = JSON.parse(localStorage.getItem("myPosts_" + user)) || [];
-
-  let grid = document.getElementById("myPostGrid");
-  grid.innerHTML = "";
-
-  myPosts.forEach(post => {
-    let div = document.createElement("div");
-    div.className = "trend-item";
-
-    div.innerHTML = `
-      <button class="delete-btn">🗑</button>
-      <img src="${post.img}">
-      <div class="card-info">
-        <p class="title">${post.title}</p>
-        <span class="tags">${post.tags}</span>
-      </div>
-    `;
-
-    grid.appendChild(div);
-  });
-
-  addDeleteButtons();
-}
+loadMyPosts();
 
 // ===== POST BUTTON =====
 document.getElementById("postBtn").onclick = () => {
@@ -151,18 +126,3 @@ document.getElementById("postBtn").onclick = () => {
 
   reader.readAsDataURL(file);
 };
-function addDeleteButtons() {
-  document.querySelectorAll(".delete-btn").forEach((btn, index) => {
-    btn.onclick = () => {
-      if (!confirm("Delete this post?")) return;
-
-      let user = localStorage.getItem("loggedUser");
-      let myPosts = JSON.parse(localStorage.getItem("myPosts_" + user)) || [];
-
-      myPosts.splice(index, 1); // remove post
-      localStorage.setItem("myPosts_" + user, JSON.stringify(myPosts));
-
-      loadMyPosts(); // refresh posts
-    };
-  });
-}
