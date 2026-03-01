@@ -5,6 +5,7 @@ window.onload = () => {
   [...trendGrid.children].sort(() => Math.random() - 0.5).forEach(e => trendGrid.appendChild(e));
 
   loadFavs();
+  loadMyPosts(); // make sure views update on load
 };
 
 // POPUP
@@ -68,6 +69,7 @@ function loadFavs() {
     }
   });
 }
+
 // ===== UPLOAD POPUP =====
 const uploadBtn = document.getElementById("uploadBtn");
 const uploadPopup = document.getElementById("uploadPopup");
@@ -78,11 +80,32 @@ document.getElementById("closeUpload").onclick = () => uploadPopup.style.display
 // ===== LOAD MY POSTS =====
 let myPosts = JSON.parse(localStorage.getItem("myPosts") || "[]");
 
+// 🔥 VIEW GROWTH SYSTEM
+function updateViews(post) {
+  if (!post.views) post.views = 0;
+  if (!post.lastUpdate) post.lastUpdate = Date.now();
+
+  const now = Date.now();
+  const secondsPassed = (now - post.lastUpdate) / 1000;
+
+  // 1 view every 40–120 seconds randomly
+  const growthInterval = 40 + Math.random() * 80;
+
+  if (secondsPassed > growthInterval) {
+    const gained = Math.floor(secondsPassed / growthInterval);
+    post.views += gained;
+    post.lastUpdate = now;
+  }
+}
+
 function loadMyPosts() {
   const grid = document.getElementById("myPostGrid");
   grid.innerHTML = "";
 
   myPosts.forEach(post => {
+
+    updateViews(post); // update fake growth
+
     const div = document.createElement("div");
     div.className = "trend-item";
     div.dataset.title = post.title;
@@ -95,13 +118,21 @@ function loadMyPosts() {
       <div class="card-info">
         <p class="title">${post.title}</p>
         <span class="tags">${post.tags}</span>
+        <span class="views">${post.views} views</span>
       </div>
     `;
     grid.appendChild(div);
   });
+
+  localStorage.setItem("myPosts", JSON.stringify(myPosts));
 }
 
 loadMyPosts();
+
+// refresh views slowly while site is open
+setInterval(() => {
+  loadMyPosts();
+}, 60000); // every 60 seconds
 
 // ===== POST BUTTON =====
 document.getElementById("postBtn").onclick = () => {
@@ -116,7 +147,9 @@ document.getElementById("postBtn").onclick = () => {
     myPosts.push({
       img: reader.result,
       title,
-      tags
+      tags,
+      views: 0,
+      lastUpdate: Date.now()
     });
 
     localStorage.setItem("myPosts", JSON.stringify(myPosts));
